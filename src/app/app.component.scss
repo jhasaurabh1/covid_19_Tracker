@@ -1,0 +1,46 @@
+@import '../assets/base-var.scss';
+
+.outer-layout{
+    height: 100%;
+    .logo {
+        height: 32px;
+        background: $bgclr;
+        margin: 16px;
+    }
+    .inner-layout{
+        nz-header {
+            background: #fff;
+            padding: 0;
+            .trigger { //Maximize and minimize button of the sidebar 
+                font-size: 18px;
+                line-height: 64px;
+                padding: 0 24px;
+                cursor: pointer;
+                transition: color 0.3s;
+            }
+            .trigger:hover {
+                color: #1890ff;
+            }
+        }
+        .main-content {
+            margin: 0 16px;
+            nz-breadcrumb {
+                margin: 16px 0;
+            }
+            .inner-content {
+                padding: 24px;
+                background: #fff;
+                min-height: 100%;
+            }
+        }
+    }
+    nz-footer {
+        text-align: center;
+    }
+}
+
+::ng-deep{
+    .ant-menu-item-selected{
+        width: 80px;
+    }
+}

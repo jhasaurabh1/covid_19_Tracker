@@ -1,0 +1,30 @@
+<nz-table #smallTable [nzData]="listOfData" [nzScroll]="{ x: '1100px' }" [nzLoading]="isLoadingShown" [nzScroll]="{ y: yScrollSize }" nzShowSizeChanger [nzPageSize]="pagesize" [nzPageSizeOptions]="[5, 10, 20, 40, 50, 80, 100]" (nzCurrentPageDataChange)="onCurrentPageDataChange($event)">
+    <thead>
+        <tr>
+            <th nzLeft>State</th>
+            <th nzLeft>State Code</th>
+            <th>Last Updated</th>
+            <th>Active</th>
+            <th>Confirmed</th>
+            <th>Deaths</th>
+            <th>Recovered</th>
+            <th>Delta Confirmed</th>
+            <th nzRight>Delta Deaths</th>
+            <th nzRight>Delta Recovered</th>
+        </tr>
+    </thead>
+    <tbody style="height: 300px; max-height: 350px; overflow: auto">
+        <tr *ngFor="let data of smallTable.data">
+            <td nzLeft class="truncate-cell">{{ data.state }}</td>
+            <td nzLeft>{{ data.statecode }}</td>
+            <td class="truncate-cell">{{ data.lastupdatedtime }}</td>
+            <td class="truncate-cell">{{ data.active }}</td>
+            <td class="truncate-cell">{{ data.confirmed }}</td>
+            <td>{{ data.deaths }}</td>
+            <td>{{ data.recovered }}</td>
+            <td>{{ data.deltaconfirmed }}</td>
+            <td nzRight>{{ data.deltadeaths }}</td>
+            <td nzRight>{{ data.deltarecovered }}</td>
+        </tr>
+    </tbody>
+</nz-table>

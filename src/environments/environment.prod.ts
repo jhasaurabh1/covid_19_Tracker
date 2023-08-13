@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: false,
+  covidBaseUrl : 'https://data.covid19india.org/data.json'
 };

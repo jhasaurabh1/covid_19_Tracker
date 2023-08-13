@@ -1,27 +1,15 @@
-# CVD19Tracker
+# covid_19_Tracker
+This project is a sample project written in angular. Here we are using three sidebar links associated with three modules, and every modules have their path matched full routers that are responsible to show their consecutive component on click. We are using Route instead of Routes array for lazy loading.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+#Modules used in the project : 
+1) highcharts-angular
+2) hicharts
+3) bootstrap
+4) ng-zorro-antd
+5) ngx-formly
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+To run the project in your computer : 
+1) paste the clone link of this project after goin into the terminal of the desired folder
+2) open the project in your any favourite editor
+3) write npm install --save if that does not work and your cli pops out error of peer dependencies, write npm install --legacy-peer-deps --save
+4) After installing the modules, run the project by typing ng serve in the terminal and you will see the localhost:4200 running your project.

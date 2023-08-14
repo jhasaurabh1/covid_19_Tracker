@@ -1,12 +1,18 @@
 .truncate-cell {
-    max-width: 80px; /* Adjust the height as needed */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
-  .truncate-cell:hover {
-    text-overflow: none;
-    overflow: visible;
-    white-space: pre-wrap;
+.truncate-cell:hover {
+  text-overflow: clip;
+  overflow: visible;
+  white-space: pre-wrap;
+}
+
+@media screen and (max-height: 768px) {
+  .truncate-cell {
+      max-width: 60px;
   }
+}

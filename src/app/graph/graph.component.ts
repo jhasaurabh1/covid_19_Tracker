@@ -1,11 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { RxStoreService } from '../rx-store.service';
 
 @Component({
-  template: `<div style="height: 100vh;"><div id="covidChart" style="height : 69%"></div></div>`,
+  template: `
+    <div class="chart-container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+      <div #chartContainer id="covidChart" style="width: 100%; height : auto; margin-top: -210px"></div>
+    </div>
+  `,
 })
 export class GraphComponent implements OnInit {
+  @ViewChild('chartContainer', { static: true }) chartContainer!: ElementRef;
+
   constructor(private apiStore: RxStoreService) { }
 
   ngOnInit(): void {
@@ -23,13 +29,10 @@ export class GraphComponent implements OnInit {
         y: parseInt(entry.totaldeceased),
       }));
 
-      Highcharts.chart('covidChart', {
+      Highcharts.chart(this.chartContainer.nativeElement, {
         chart: {
           type: 'spline',
-          spacingTop: 20,
-          spacingBottom: 20,
-          spacingLeft: 10,
-          spacingRight: 10,
+          spacing: [20, 10, 20, 10],
           animation: true
         },
         title: {
@@ -73,5 +76,4 @@ export class GraphComponent implements OnInit {
       });
     });
   }
-
 }

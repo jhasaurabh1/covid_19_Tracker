@@ -3,7 +3,7 @@
 
   <!--Sidebar creation with nz-sider to provide all the links to specific pages on clicks-->
   <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
-    <div class="logo"></div>
+    <div class="logo" [routerLink]="['/home']"></div>
     <!--Here comes the logo of the company, currently just a box comes to show up the space only for the logo -->
 
     <!--Initialise the <ul> with the nzMode it shows the link in and theme of the sidebar to be shown, we can give it light to show the link and bg of sidebar in white -->
@@ -38,7 +38,6 @@
 
       <!--Breadcrumb (Dynamic assignment of the current route)-->
       <nz-breadcrumb>
-        <nz-breadcrumb-item>Home</nz-breadcrumb-item> <!--static-->
         <nz-breadcrumb-item *ngIf="breadCrumb != ''">{{breadCrumb}}</nz-breadcrumb-item><!--Dynamic-->
       </nz-breadcrumb>
       <!---->
@@ -52,7 +51,7 @@
     </nz-content>
     <!---->
 
-    <nz-footer>Sample Project ©2023 Implement By Saurabh Jha</nz-footer> 
+    <nz-footer>Sample Project ©2023 Implement By Saurabh Jha</nz-footer>
   </nz-layout>
   <!---->
 

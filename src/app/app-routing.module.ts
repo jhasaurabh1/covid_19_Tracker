@@ -13,12 +13,17 @@ const routes: Route[] = [
     loadChildren: () => import('./graph/graph.module').then(m => m.GraphModule)
   },
   <Route>{
+    path: 'home',
+    pathMatch: 'full',
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
+  },
+  <Route>{
     path: 'table',
     pathMatch: 'full',
     loadChildren: () => import('./table/table.module').then(m => m.TableModule)
   },
   <Route>{
-    path : '', redirectTo : 'table', pathMatch : 'full'
+    path : '', redirectTo : 'home', pathMatch : 'full'
   }
 ];
 

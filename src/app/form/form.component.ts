@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormlyFormOptions, FormlyFieldConfig } from '@ngx-formly/core';
-import { FormGroup } from '@angular/forms'
+import { FormGroup } from '@angular/forms';
 
 @Component({
   styleUrls: ['./form.component.scss'],
@@ -9,21 +9,42 @@ import { FormGroup } from '@angular/forms'
       <div class="child-div">
         <form [formGroup]="form" (ngSubmit)="submit()">
           <formly-form [form]="form" [fields]="fields" [options]="options"></formly-form>
-          <button style="float : right" type="submit" class="btn btn-success" [disabled]="!form.valid">Submit</button>
+          <button style="float : right" type="submit" class="btn btn-success" [disabled]="form.invalid">Submit</button>
         </form>
       </div>
     </div>
   `
 })
-export class FormComponent {
-  constructor() { }
+export class FormComponent implements OnInit {
+  constructor() {}
+
+  form = new FormGroup({});
+  options: FormlyFormOptions = {};
+  fields!: FormlyFieldConfig[];
+
+  ngOnInit() {
+    this.fields = this.constructFormFields(this.formData);
+  }
+
+  private constructFormFields(formData: any[]): FormlyFieldConfig[] {
+    return formData.map(item => ({
+      key: item.key,
+      type: item.type,
+      templateOptions: {
+        label: item.templateOptions.label,
+        placeholder: item.templateOptions.placeholder,
+        required: item.templateOptions.required,
+        type: item.templateOptions.type || 'text'
+      }
+    }));
+  }
 
   formData: any[] = [ // Dynamic form's json - it will be fed to the formly field config to render on screen 
     {
       "key": "first_name",
       "type": "input",
       "templateOptions": {
-        "label": "First Name",
+        "label": "First Name ",
         "placeholder": "Enter your first name",
         "required": true
       }
@@ -58,6 +79,15 @@ export class FormComponent {
       }
     },
     {
+      "key": "subject",
+      "type": "input",
+      "templateOptions": {
+        "label": "Subject",
+        "placeholder": "Enter the subject for your message",
+        "required": true,
+      }
+    },
+    {
       "key": "message",
       "type": "textarea",
       "templateOptions": {
@@ -68,21 +98,9 @@ export class FormComponent {
     }
   ]
 
-  form = new FormGroup({});
-  model = {};
-  options: FormlyFormOptions = {};
-  fields: FormlyFieldConfig[] = this.formData
-
-  /*We can construct this type of json using some algorithms, 
-  and then feed it to it dynamically directly also. 
-  ngx-formly supports dynamic addition of fields also*/
-
-  public formvalue: any;
   submit() {
     if (this.form.valid) {
-      // Handle form submission
-      console.log(this.form.value)
+      console.log(this.form.value);
     }
   }
-
 }

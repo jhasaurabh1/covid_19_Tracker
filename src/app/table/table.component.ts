@@ -6,7 +6,26 @@ import { StateWiseData } from '../covid-data';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  styles: [`
+    .truncate-cell {
+      max-width: 80px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .truncate-cell:hover {
+      text-overflow: clip;
+      overflow: visible;
+      white-space: pre-wrap;
+    }
+    
+    @media screen and (max-height: 768px) {
+      .truncate-cell {
+          max-width: 60px;
+      }
+    }
+  `]
 })
 export class TableComponent implements OnInit {
   public listOfData: StateWiseData[] = [];

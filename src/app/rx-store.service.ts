@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { CovidData } from './covid-data'
 
@@ -9,7 +9,7 @@ import { CovidData } from './covid-data'
 })
 
 export class RxStoreService {
-  public covidUrl : string = environment.covidBaseUrl;
+  private readonly covidUrl : string = environment.covidBaseUrl;
 
   constructor(private _http_: HttpClient) {}
 
